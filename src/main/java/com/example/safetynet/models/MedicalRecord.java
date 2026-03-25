@@ -1,14 +1,14 @@
 package com.example.safetynet.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class MedicalRecord {
 
-    private Integer id;
     private String firstName;
     private String lastName;
-    private LocalDate birthDate;
-    private String medications;
-    private String allergies;
+    private LocalDate birthdate;
+    private List<String> medications;
+    private List<String> allergies;
 
 }
