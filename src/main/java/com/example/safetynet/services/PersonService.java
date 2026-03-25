@@ -2,6 +2,7 @@ package com.example.safetynet.services;
 
 import com.example.safetynet.models.Data;
 import com.example.safetynet.models.Person;
+import com.example.safetynet.repositories.PersonRepository;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -12,29 +13,39 @@ import java.util.List;
 public class PersonService {
 
     private final DataService dataService;
+    private final PersonRepository personRepository;
 
-    public PersonService(DataService dataService){
+    public PersonService(DataService dataService, PersonRepository personRepository){
         this.dataService = dataService;
+        this.personRepository = personRepository;
     }
 
-    public void addPerson(Person person){
+    public ArrayList<Person> getPersons(){
+            return personRepository.findAll();
+    }
+
+    public void addPerson(Person person) {
+//            Data d = dataService.getData();
+//            if (d.getPersons() == null){
+//                d.setPersons(new ArrayList<>());
+//            }
+//            d.getPersons().add(person);
+
+            ArrayList<Person> data = personRepository.findAll();
+            data.add(person);
+    }
+
+    public void updatePerson(Person person){
         try {
-            Data d = dataService.getData();
-            if (d.getPersons() == null){
-                d.setPersons(new ArrayList<>());
-            }
-            d.getPersons().add(person);
-        } catch (IOException e){
-            throw new RuntimeException("Erreur lors de l'ajout d'une personne", e);
-        }
-    }
+            ArrayList<Person> p = dataService.getData().getPersons();
 
-    public void updatePerson(Person person) throws IOException{
-        ArrayList<Person> p = dataService.getData().getPersons();
-        for (int i = 0; i < p.size(); i++){
-            if(p.get(i).getFirstName().equals(person.getFirstName()) && p.get(i).getLastName().equals(person.getLastName())){
-                p.set(i, person);
+            for (int i = 0; i < p.size(); i++){
+                if(p.get(i).getFirstName().equals(person.getFirstName()) && p.get(i).getLastName().equals(person.getLastName())){
+                    p.set(i, person);
+                }
             }
+        }catch (IOException e){
+            throw new RuntimeException("Erreur lors de la mise à jour d'une personne");
         }
     }
 

@@ -2,9 +2,12 @@ package com.example.safetynet.controllers;
 
 import com.example.safetynet.models.Person;
 import com.example.safetynet.services.PersonService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
 
 
 @RestController
@@ -16,8 +19,16 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @PostMapping("/person")
+    @PostMapping("/person/add")
     public  void addPerson(@RequestBody Person person){
         personService.addPerson(person);
+    }
+
+    @PostMapping("/person/update")
+    public void updatePerson(@RequestBody Person person) { personService.updatePerson(person); }
+
+    @GetMapping("/person/get")
+    public ArrayList<Person> getPersons(){
+        return personService.getPersons();
     }
 }
