@@ -6,7 +6,7 @@ public class Data {
 
     private ArrayList<Person> persons;
     private ArrayList<Firestation> firestations;
-    private ArrayList<MedicalRecord> medicalRecords;
+    private ArrayList<MedicalRecord> medicalrecords;
 
     public ArrayList<Firestation> getFirestations() {
         return firestations;
@@ -24,11 +24,11 @@ public class Data {
         this.persons = persons;
     }
 
-    public ArrayList<MedicalRecord> getMedicalRecords() {
-        return medicalRecords;
+    public ArrayList<MedicalRecord> getMedicalrecords() {
+        return medicalrecords;
     }
 
-    public void setMedicalRecords(ArrayList<MedicalRecord> medicalRecords) {
-        this.medicalRecords = medicalRecords;
+    public void setMedicalrecords(ArrayList<MedicalRecord> medicalrecords) {
+        this.medicalrecords = medicalrecords;
     }
 }
