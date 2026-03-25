@@ -10,11 +10,9 @@ import java.util.ArrayList;
 @Service
 public class PersonService {
 
-    private final DataService dataService;
     private final PersonRepository personRepository;
 
-    public PersonService(DataService dataService, PersonRepository personRepository){
-        this.dataService = dataService;
+    public PersonService(PersonRepository personRepository){
         this.personRepository = personRepository;
     }
 
@@ -27,17 +25,6 @@ public class PersonService {
     }
 
     public void updatePerson(Person person){
-//        try {
-//            ArrayList<Person> p = dataService.getData().getPersons();
-//
-//            for (int i = 0; i < p.size(); i++){
-//                if(p.get(i).getFirstName().equals(person.getFirstName()) && p.get(i).getLastName().equals(person.getLastName())){
-//                    p.set(i, person);
-//                }
-//            }
-//        }catch (IOException e){
-//            throw new RuntimeException("Erreur lors de la mise à jour d'une personne");
-//        }
         personRepository.update(person);
     }
 
