@@ -1,0 +1,34 @@
+package com.example.safetynet.models;
+
+import java.util.ArrayList;
+
+public class Data {
+
+    private ArrayList<Person> persons;
+    private ArrayList<Firestation> firestations;
+    private ArrayList<MedicalRecord> medicalRecords;
+
+    public ArrayList<Firestation> getFirestations() {
+        return firestations;
+    }
+
+    public void setFirestations(ArrayList<Firestation> firestations){
+        this.firestations = firestations;
+    }
+
+    public ArrayList<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(ArrayList<Person> persons) {
+        this.persons = persons;
+    }
+
+    public ArrayList<MedicalRecord> getMedicalRecords() {
+        return medicalRecords;
+    }
+
+    public void setMedicalRecords(ArrayList<MedicalRecord> medicalRecords) {
+        this.medicalRecords = medicalRecords;
+    }
+}
