@@ -26,11 +26,15 @@ public class PersonRepository {
         return this.persons;
     }
 
-    public void save(Person person) throws IOException{
+    public void save(Person person){
         this.persons.add(person);
     }
 
-    public void update(Person person) throws IOException{
-
+    public void update(Person person){
+        for (int i = 0; i < persons.size(); i++){
+            if(persons.get(i).getFirstName().equals(person.getFirstName()) && persons.get(i).getLastName().equals(person.getLastName())){
+                persons.set(i, person);
+            }
+        }
     }
 }
