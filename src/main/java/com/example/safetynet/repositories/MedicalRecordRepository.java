@@ -13,10 +13,14 @@ import java.util.ArrayList;
 public class MedicalRecordRepository {
 
     private final ArrayList<MedicalRecord> medicalRecords;
+    private final PersonRepository personRepo;
+    private final FirestationRepository firestationRepo;
 
-    public MedicalRecordRepository(DataService dataService) throws IOException {
+    public MedicalRecordRepository(DataService dataService, PersonRepository personRepo, FirestationRepository firestationRepo) throws IOException {
         Data data = dataService.getData();
         this.medicalRecords = data.getMedicalrecords();
+        this.personRepo = personRepo;
+        this.firestationRepo = firestationRepo;
     }
 
     public void save(MedicalRecord medicalRecord){
