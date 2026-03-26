@@ -25,7 +25,11 @@ public class FirestationRepository {
 
     public ArrayList<String> getPhonesByCaserns(String station){
         ArrayList<Person> persons = personRepo.findAll();
-
+        for (int i = 0; i < firestations.size(); i++){
+            if(firestations.get(i).getStation().equals(station)){
+                String address = firestations.get(i).getAddress();
+            }
+        }
 
     }
 }
