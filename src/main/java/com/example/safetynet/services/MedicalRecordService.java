@@ -20,6 +20,14 @@ public class MedicalRecordService {
         medicalRepo.save(medicalRecord);
     }
 
+    public void updateRecord(MedicalRecord medicalRecord){
+        medicalRepo.update(medicalRecord);
+    }
+
+    public void deleteRecord(String firstName, String lastName){
+        medicalRepo.delete(firstName, lastName);
+    }
+
     public ArrayList<MedicalRecord> getRecords(){
         return medicalRepo.findAll();
     }

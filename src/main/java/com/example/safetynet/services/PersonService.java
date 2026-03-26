@@ -28,7 +28,13 @@ public class PersonService {
         personRepository.update(person);
     }
 
-    public void deletePerson(String firstName, String lastName){}
+    public ArrayList<String> getEmailsByCity(String city){
+        return personRepository.getEmailsByCity(city);
+    }
+
+    public void deletePerson(String firstName, String lastName){
+        personRepository.delete(firstName, lastName);
+    }
 
 //    public List<Person> findByAddress(String address){
 //

@@ -37,4 +37,24 @@ public class PersonRepository {
             }
         }
     }
+
+    public void delete(String firstName, String lastName){
+        for(int i = 0; i < persons.size(); i++){
+            if(persons.get(i).getFirstName().equals(firstName) && persons.get(i).getLastName().equals(lastName)){
+                persons.remove(persons.get(i));
+                break;
+            }
+        }
+    }
+
+    public ArrayList<String> getEmailsByCity(String city){
+        ArrayList<String> personsEmail = new ArrayList<>();
+        for (int i = 0; i < persons.size(); i++){
+            if(persons.get(i).getCity().equals(city)){
+                String email = persons.get(i).getEmail();
+                personsEmail.add(email);
+            }
+        }
+        return personsEmail;
+    }
 }
