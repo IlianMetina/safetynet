@@ -208,7 +208,6 @@
             "email": "gramps@email.com"
         }
     ],
-    // if firestations.get(i).getAddress()
     "firestations": [
         {
             "address": "1509 Culver St",

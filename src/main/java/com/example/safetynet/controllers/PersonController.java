@@ -1,6 +1,7 @@
 package com.example.safetynet.controllers;
 
 import com.example.safetynet.models.Person;
+import com.example.safetynet.repositories.PersonInfoDTO;
 import com.example.safetynet.services.PersonService;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,5 +41,13 @@ public class PersonController {
     @GetMapping("/communityEmail")
     public ArrayList<String> getEmailsByCity(@RequestParam String city){
         return personService.getEmailsByCity(city);
+    }
+
+    @GetMapping("/personInfo")
+    public ArrayList<PersonInfoDTO> findPersonsInfosByLastAndFirstName(
+            @RequestParam String lastName,
+            @RequestParam String firstName
+    ){
+        return personService.findPersonsInfosByLastAndFirstName(lastName, firstName);
     }
 }

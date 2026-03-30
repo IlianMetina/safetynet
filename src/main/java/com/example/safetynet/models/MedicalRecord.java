@@ -1,6 +1,7 @@
 package com.example.safetynet.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MedicalRecord {
@@ -8,8 +9,8 @@ public class MedicalRecord {
     private String firstName;
     private String lastName;
     private String birthdate;
-    private List<String> medications;
-    private List<String> allergies;
+    private ArrayList<String> medications;
+    private ArrayList<String> allergies;
 
     public String getFirstName(){
         return this.firstName;
@@ -35,11 +36,11 @@ public class MedicalRecord {
         this.birthdate = birthdate;
     }
 
-    public List<String> getMedications(){
+    public ArrayList<String> getMedications(){
         return this.medications;
     }
 
-    public List<String> getAllergies(){
+    public ArrayList<String> getAllergies(){
         return this.allergies;
     }
 }

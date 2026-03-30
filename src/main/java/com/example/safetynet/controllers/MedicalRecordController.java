@@ -25,7 +25,7 @@ public class MedicalRecordController {
         medicalService.updateRecord(medicalRecord);
     }
 
-    @DeleteMapping("/person/delete")
+    @DeleteMapping("/medical-record/delete")
     public void deletePerson(
             @RequestParam String firstName,
             @RequestParam String lastName

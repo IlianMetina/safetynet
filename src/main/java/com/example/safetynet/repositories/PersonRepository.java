@@ -1,11 +1,15 @@
 package com.example.safetynet.repositories;
 
 import com.example.safetynet.models.Data;
+import com.example.safetynet.models.MedicalRecord;
 import com.example.safetynet.models.Person;
 import com.example.safetynet.services.DataService;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @Repository
@@ -57,4 +61,6 @@ public class PersonRepository {
         }
         return personsEmail;
     }
+
+
 }

@@ -23,6 +23,14 @@ public class FirestationRepository {
         this.personRepo = personRepo;
     }
 
+    public ArrayList<Firestation> findAllFirestations(){
+        return this.firestations;
+    }
+
+    public void addFirestation(Firestation firestation){
+        this.firestations.add(firestation);
+    }
+
     public ArrayList<String> getPhonesByCaserns(String station){
         ArrayList<Person> persons = personRepo.findAll();
         ArrayList<String> phones = new ArrayList<>();
