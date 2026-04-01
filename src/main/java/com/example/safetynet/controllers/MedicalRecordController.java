@@ -15,12 +15,19 @@ public class MedicalRecordController {
         this.medicalService = medicalService;
     }
 
+
+    /* ============ CRUD ============ */
     @PostMapping("/medical/add")
     public void addRecord(MedicalRecord medicalRecord){
         medicalService.addRecord(medicalRecord);
     }
 
-    @PatchMapping("/medical/update")
+    @GetMapping("/medical/get")
+    public ArrayList<MedicalRecord> medicalRecords(){
+        return medicalService.getRecords();
+    }
+
+    @PutMapping("/medical/update")
     public void updateRecord(MedicalRecord medicalRecord){
         medicalService.updateRecord(medicalRecord);
     }
@@ -32,9 +39,16 @@ public class MedicalRecordController {
     ){
         medicalService.deleteRecord(firstName, lastName);
     }
+    /* ============ CRUD ============ */
 
-    @GetMapping("/medical/get")
-    public ArrayList<MedicalRecord> medicalRecords(){
-        return medicalService.getRecords();
-    }
+
+    /* ============ ENDPOINTS ============ */
+
+
+
+
+
+    /* ============ ENDPOINTS ============ */
+
+
 }

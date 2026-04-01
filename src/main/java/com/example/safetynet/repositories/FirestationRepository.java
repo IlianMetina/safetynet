@@ -1,5 +1,6 @@
 package com.example.safetynet.repositories;
 
+import com.example.safetynet.dto.FloodPersonDTO;
 import com.example.safetynet.models.Data;
 import com.example.safetynet.models.Firestation;
 import com.example.safetynet.models.Person;
@@ -47,4 +48,13 @@ public class FirestationRepository {
         }
         return phones;
     }
+
+    public void updateFirestation(int index, Firestation firestation){
+        firestations.set(index, firestation);
+    }
+
+    public void deleteFirestation(int index){
+        firestations.remove(index);
+    }
+
 }

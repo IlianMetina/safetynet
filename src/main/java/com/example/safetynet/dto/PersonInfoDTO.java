@@ -1,4 +1,4 @@
-package com.example.safetynet.repositories;
+package com.example.safetynet.dto;
 
 import java.util.ArrayList;
 
