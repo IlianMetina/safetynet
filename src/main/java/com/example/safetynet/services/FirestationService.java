@@ -72,7 +72,6 @@ public class FirestationService {
         ArrayList<MedicalRecord> medicalRecords = medicalRecordRepository.findAll();
         ArrayList<Firestation> firestations = firestationRepository.findAllFirestations();
         ArrayList<FloodPersonDTO> results = new ArrayList<>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
         for (int s = 0; s < stations.size(); s++){
             for (int f = 0; f < firestations.size(); f++){
@@ -93,8 +92,7 @@ public class FirestationService {
                                     &&
                                     medicalRecords.get(j).getLastName().equals(persons.get(i).getLastName())
                                 ){
-                                    LocalDate birthDate = LocalDate.parse(medicalRecords.get(j).getBirthdate(), formatter);
-                                    dto.setAge(Period.between(birthDate, LocalDate.now()).getYears());
+                                    dto.setAge(DateUtils.calculateAge(medicalRecords.get(j).getBirthdate()));
                                     dto.setMedications(medicalRecords.get(j).getMedications());
                                     dto.setAllergies(medicalRecords.get(j).getAllergies());
                                     break;
