@@ -1,5 +1,6 @@
 package com.example.safetynet.controllers;
 
+import com.example.safetynet.dto.FireDTO;
 import com.example.safetynet.dto.FirestationCoverageDTO;
 import com.example.safetynet.dto.FloodPersonDTO;
 import com.example.safetynet.models.Firestation;
@@ -62,7 +63,10 @@ public class FirestationController {
         return this.firestationService.getPersonsByStation(stationNumber);
     }
 
-
+    @GetMapping("fire")
+    public FireDTO getResidentsByAddress(@RequestParam String address){
+        return firestationService.getResidentsByAddress(address);
+    }
 
     /* ============ ENDPOINTS ============ */
 

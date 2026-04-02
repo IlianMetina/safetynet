@@ -1,9 +1,6 @@
 package com.example.safetynet.services;
 
-import com.example.safetynet.dto.FirestationCoverageDTO;
-import com.example.safetynet.dto.FirestationPersonDTO;
-import com.example.safetynet.dto.FloodDTO;
-import com.example.safetynet.dto.FloodPersonDTO;
+import com.example.safetynet.dto.*;
 import com.example.safetynet.models.Firestation;
 import com.example.safetynet.models.MedicalRecord;
 import com.example.safetynet.models.Person;
@@ -64,8 +61,6 @@ public class FirestationService {
             }
         }
     }
-
-
 
     public ArrayList<FloodPersonDTO> getFloodByStations(ArrayList<String> stations){
         ArrayList<Person> persons = personRepository.findAll();
@@ -167,4 +162,52 @@ public class FirestationService {
         return result;
 
     }
+
+    public FireDTO getResidentsByAddress(String address){
+        ArrayList<Person> persons = personRepository.findAll();
+        ArrayList<MedicalRecord> medicalRecords = medicalRecordRepository.findAll();
+        ArrayList<Firestation> firestations = firestationRepository.findAllFirestations();
+        FireDTO fireDTO = new FireDTO();
+        ArrayList<FirePersonAddressDTO> personsDTO = new ArrayList<>();
+
+        String stationNumber = null;
+        for (int f = 0; f < firestations.size(); f++){
+            if(firestations.get(f).getAddress().equals(address)){
+                stationNumber = firestations.get(f).getStation();
+                break;
+            }
+        }
+
+        fireDTO.setStationNumber(stationNumber);
+
+        for (int p = 0; p < persons.size(); p++){
+
+            if(persons.get(p).getAddress().equals(address)){
+
+                FirePersonAddressDTO dto = new FirePersonAddressDTO();
+                dto.setLastName(persons.get(p).getLastName());
+                dto.setPhone(persons.get(p).getPhone());
+
+                for (int i = 0; i < medicalRecords.size(); i++){
+                    if(
+                        persons.get(p).getFirstName().equals(medicalRecords.get(i).getFirstName())
+                        &&
+                        persons.get(p).getLastName().equals(medicalRecords.get(i).getLastName())
+                    ){
+                        dto.setAge(DateUtils.calculateAge(medicalRecords.get(i).getBirthdate()));
+                        dto.setMedications(medicalRecords.get(i).getMedications());
+                        dto.setAllergies(medicalRecords.get(i).getAllergies());
+                        break;
+                    }
+                }
+
+                personsDTO.add(dto);
+            }
+        }
+
+        fireDTO.setPersons(personsDTO);
+        return fireDTO;
+    }
+
+
 }

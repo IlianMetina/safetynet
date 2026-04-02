@@ -2,22 +2,13 @@ package com.example.safetynet.dto;
 
 import java.util.ArrayList;
 
-public class FirePersonDTO {
+public class FirePersonAddressDTO {
 
-    private String station;
     private String lastName;
     private String phone;
     private int age;
-    private ArrayList<String> allergies;
     private ArrayList<String> medications;
-
-    public String getStation(){
-        return this.station;
-    }
-
-    public void setStation(String station){
-        this.station = station;
-    }
+    private ArrayList<String> allergies;
 
     public String getLastName(){
         return this.lastName;
@@ -43,20 +34,20 @@ public class FirePersonDTO {
         this.age = age;
     }
 
-    public ArrayList<String> getAllergies(){
-        return this.allergies;
-    }
-
-    public void setAllergies(ArrayList<String> allergies){
-        this.allergies = allergies;
-    }
-
     public ArrayList<String> getMedications(){
         return this.medications;
     }
 
     public void setMedications(ArrayList<String> medications){
         this.medications = medications;
+    }
+
+    public ArrayList<String> getAllergies(){
+        return this.allergies;
+    }
+
+    public void setAllergies(ArrayList<String> allergies){
+        this.allergies = allergies;
     }
 
 }

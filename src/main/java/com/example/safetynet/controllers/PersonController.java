@@ -1,6 +1,7 @@
 package com.example.safetynet.controllers;
 
 import com.example.safetynet.dto.ChildAlertDTO;
+import com.example.safetynet.dto.FireDTO;
 import com.example.safetynet.models.Person;
 import com.example.safetynet.dto.PersonInfoDTO;
 import com.example.safetynet.services.PersonService;
@@ -62,7 +63,6 @@ public class PersonController {
     public ArrayList<ChildAlertDTO> getChildrenByAddress(@RequestParam String address){
         return this.personService.getChildrenByAddress(address);
     }
-
 
     /* ============ ENDPOINTS ============ */
 
