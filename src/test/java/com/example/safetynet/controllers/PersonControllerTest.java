@@ -91,6 +91,25 @@ public class PersonControllerTest {
 
     }
 
+    @Test
+    public void getEmailsByCityTest(){
+
+        String city = "Paris";
+        ArrayList<Person> persons = personController.getPersons();
+        ArrayList<String> personsEmail = new ArrayList<>();
+        for (int i = 0; i < persons.size(); i++){
+            System.out.println(persons.get(i).getCity());
+            if(persons.get(i).getCity().equals(city)){
+                personsEmail.add(persons.get(i).getEmail());
+                System.out.println(persons.get(i).getEmail());
+            }
+        }
+
+        for (int j = 0; j < personsEmail.size(); j++){
+            System.out.println("=====" + personsEmail.get(j));
+            assertEquals("Paris", personsEmail.get(j));
+        }
+    }
 
     private Person buildTestPerson(){
         Person person = new Person();
