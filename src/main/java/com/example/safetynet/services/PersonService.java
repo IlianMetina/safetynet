@@ -37,12 +37,13 @@ public class PersonService {
         personRepository.update(person);
     }
 
-    public ArrayList<String> getEmailsByCity(String city){
-        return personRepository.getEmailsByCity(city);
-    }
 
     public void deletePerson(String firstName, String lastName){
         personRepository.delete(firstName, lastName);
+    }
+
+    public ArrayList<String> getEmailsByCity(String city){
+        return personRepository.getEmailsByCity(city);
     }
 
     public ArrayList<ChildAlertDTO> getChildrenByAddress(String address){

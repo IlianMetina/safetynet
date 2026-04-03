@@ -23,7 +23,7 @@ public class MedicalRecordController {
     }
 
     @GetMapping("/medical/get")
-    public ArrayList<MedicalRecord> medicalRecords(){
+    public ArrayList<MedicalRecord> getMedicalRecords(){
         return medicalService.getRecords();
     }
 
