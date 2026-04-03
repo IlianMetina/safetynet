@@ -33,7 +33,7 @@ public class MedicalRecordController {
     }
 
     @DeleteMapping("/medical-record/delete")
-    public void deletePerson(
+    public void deleteRecord(
             @RequestParam String firstName,
             @RequestParam String lastName
     ){

@@ -47,6 +47,40 @@ public class FirestationControllerTest {
         assertTrue(isAdded);
     }
 
+    @Test
+    public void updateFirestationControllerTest(){
+
+        ArrayList<Firestation> firestations = firestationController.findAllFirestations();
+        int selectIndex = 1;
+
+        Firestation originalFirestation = firestations.get(selectIndex);
+
+        Firestation modifiedFirestation = new Firestation();
+
+        modifiedFirestation.setAddress(originalFirestation.getAddress());
+
+        modifiedFirestation.setStation("99");
+
+        firestationController.updateFirestation(modifiedFirestation);
+
+        Firestation updatedFirestation = firestationController.findAllFirestations().get(selectIndex);
+
+        assertEquals("99", updatedFirestation.getStation());
+    }
+
+    @Test
+    public void deleteFirestationControllerTest(){
+
+        Firestation firestation = buildFirestationControllerTest();
+        firestationController.addFirestation(firestation);
+        int firestationSizeBefore = firestationController.findAllFirestations().size();
+        firestationController.deleteFirestation(firestation.getAddress());
+        int firestationSizeAfter = firestationController.findAllFirestations().size();
+
+        assertEquals(firestationSizeBefore - 1, firestationSizeAfter);
+
+    }
+
     public static Firestation buildFirestationControllerTest(){
         Firestation firestationToAdd = new Firestation();
         firestationToAdd.setAddress("123 Rue Trivoli");

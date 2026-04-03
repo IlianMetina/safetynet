@@ -1,5 +1,6 @@
 package com.example.safetynet.controllers;
 
+import com.example.safetynet.models.Firestation;
 import com.example.safetynet.models.MedicalRecord;
 import com.example.safetynet.models.Person;
 import com.example.safetynet.utils.UtilsTest;
@@ -49,14 +50,35 @@ public class MedicalRecordControllerTest {
     }
 
     @Test
-    public void updateMedicalRecordTest(){
+    public void updateMedicalRecordControllerTest(){
 
+        ArrayList<MedicalRecord> medicalRecords = medicalRecordController.getMedicalRecords();
+        int selectIndex = 1;
 
+        MedicalRecord originalMedicalRecord = medicalRecords.get(selectIndex);
+        MedicalRecord modifiedMedicalRecord = new MedicalRecord();
+
+        modifiedMedicalRecord.setFirstName(originalMedicalRecord.getFirstName());
+        modifiedMedicalRecord.setLastName(originalMedicalRecord.getLastName());
+
+        modifiedMedicalRecord.setBirthdate("11/08/2000");
+        medicalRecordController.updateRecord(modifiedMedicalRecord);
+
+        MedicalRecord updatedMedicalRecord = medicalRecordController.getMedicalRecords().get(selectIndex);
+
+        assertEquals("11/08/2000", updatedMedicalRecord.getBirthdate());
     }
 
     @Test
-    public void deleteMedicalRecordTest(){
+    public void deleteMedicalRecord(){
 
+        MedicalRecord medicalRecord = buildMedicalRecordTest();
+        medicalRecordController.addRecord(medicalRecord);
+        int medicalRecordSizeBefore = medicalRecordController.getMedicalRecords().size();
+        medicalRecordController.deleteRecord(medicalRecord.getFirstName(), medicalRecord.getLastName());
+        int medicalRecordSizeAfter = medicalRecordController.getMedicalRecords().size();
+
+        assertEquals(medicalRecordSizeBefore - 1, medicalRecordSizeAfter);
 
     }
 
