@@ -99,7 +99,7 @@ public class PersonService {
                 for (int j = 0; j < medicalRecords.size(); j++){
                     if(
                         medicalRecords.get(j).getFirstName().equals(persons.get(i).getFirstName())
-                            &&
+                        &&
                         medicalRecords.get(j).getLastName().equals(persons.get(i).getLastName())
                     ){
                         dto.setMedications(medicalRecords.get(j).getMedications());

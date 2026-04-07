@@ -49,10 +49,11 @@ public class FirestationController {
 
     /* ============ ENDPOINTS ============ */
 
-    @GetMapping("firestation/getPhonesByCaserns")
+    @GetMapping("/firestation/getPhonesByCaserns")
     public ArrayList<String> getPhonesByCaserns(@RequestParam String station){
         return this.firestationService.getPhonesByCaserns(station);
     }
+
     @GetMapping("/flood/stations")
     public ArrayList<FloodPersonDTO> getFloodByStations(@RequestParam ArrayList<String> stations){
         return firestationService.getFloodByStations(stations);

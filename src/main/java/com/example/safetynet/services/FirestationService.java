@@ -62,6 +62,8 @@ public class FirestationService {
         }
     }
 
+    /* ===================================================================== */
+
     public ArrayList<FloodPersonDTO> getFloodByStations(ArrayList<String> stations){
         ArrayList<Person> persons = personRepository.findAll();
         ArrayList<MedicalRecord> medicalRecords = medicalRecordRepository.findAll();
@@ -98,8 +100,6 @@ public class FirestationService {
                         }
 
                     }
-
-
                 }
             }
         }
@@ -209,5 +209,6 @@ public class FirestationService {
         return fireDTO;
     }
 
+    /* ===================================================================== */
 
 }

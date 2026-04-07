@@ -15,7 +15,7 @@ public class FirestationPersonDTO {
         this.firstName = firstName;
     }
 
-    public String lastName(){
+    public String getLastName(){
         return this.lastName;
     }
 

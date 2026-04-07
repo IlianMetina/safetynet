@@ -20,7 +20,7 @@ public class MedicalRecordControllerTest {
     private MedicalRecordController medicalRecordController;
 
     @Test
-    public void getMedicalRecordsControllerTest(){
+    void getMedicalRecordsControllerTest(){
         ArrayList<MedicalRecord> medicalRecords = medicalRecordController.getMedicalRecords();
         assertNotNull(medicalRecords);
         assertFalse(medicalRecords.isEmpty());
@@ -31,7 +31,7 @@ public class MedicalRecordControllerTest {
     }
 
     @Test
-    public void addMedicalRecordTest(){
+    void addMedicalRecordTest(){
         boolean isAdded = false;
         MedicalRecord singleMedicalRecord = buildMedicalRecordTest();
         medicalRecordController.addRecord(singleMedicalRecord);
@@ -50,7 +50,7 @@ public class MedicalRecordControllerTest {
     }
 
     @Test
-    public void updateMedicalRecordControllerTest(){
+    void updateMedicalRecordControllerTest(){
 
         ArrayList<MedicalRecord> medicalRecords = medicalRecordController.getMedicalRecords();
         int selectIndex = 1;
@@ -70,7 +70,7 @@ public class MedicalRecordControllerTest {
     }
 
     @Test
-    public void deleteMedicalRecord(){
+    void deleteMedicalRecord(){
 
         MedicalRecord medicalRecord = buildMedicalRecordTest();
         medicalRecordController.addRecord(medicalRecord);

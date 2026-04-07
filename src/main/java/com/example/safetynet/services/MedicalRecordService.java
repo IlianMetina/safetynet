@@ -20,6 +20,10 @@ public class MedicalRecordService {
         medicalRepo.save(medicalRecord);
     }
 
+    public ArrayList<MedicalRecord> getRecords(){
+        return medicalRepo.findAll();
+    }
+
     public void updateRecord(MedicalRecord medicalRecord){
         medicalRepo.update(medicalRecord);
     }
@@ -28,8 +32,5 @@ public class MedicalRecordService {
         medicalRepo.delete(firstName, lastName);
     }
 
-    public ArrayList<MedicalRecord> getRecords(){
-        return medicalRepo.findAll();
-    }
 
 }

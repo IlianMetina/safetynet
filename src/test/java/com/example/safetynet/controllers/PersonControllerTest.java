@@ -1,5 +1,6 @@
 package com.example.safetynet.controllers;
 
+import com.example.safetynet.dto.ChildAlertDTO;
 import com.example.safetynet.models.MedicalRecord;
 import com.example.safetynet.models.Person;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,7 @@ public class PersonControllerTest {
 
     /* ===== CREATE TEST ===== */
     @Test
-    public void addPersonControllerTest(){
+    void addPersonControllerTest(){
 
         boolean isAdded = false;
         Person personToAdd = buildTestPerson();
@@ -39,7 +40,7 @@ public class PersonControllerTest {
 
     /* ===== READ TEST ===== */
     @Test
-    public void getPersonsControllerTest(){
+    void getPersonsControllerTest(){
         ArrayList<Person> persons = personController.getPersons();
         assertNotNull(persons);
         assertFalse(persons.isEmpty());
@@ -51,7 +52,7 @@ public class PersonControllerTest {
 
     /* ===== UPDATE TEST ===== */
     @Test
-    public void updatePersonControllerTest(){
+    void updatePersonControllerTest(){
 
         ArrayList<Person> persons = personController.getPersons();
         int selectIndex = 1;
@@ -79,7 +80,7 @@ public class PersonControllerTest {
 
     /* ===== DELETE TEST ===== */
     @Test
-    public void deletePerson(){
+    void deletePerson(){
 
         Person person = buildTestPerson();
         personController.addPerson(person);
@@ -92,23 +93,54 @@ public class PersonControllerTest {
     }
 
     @Test
-    public void getEmailsByCityTest(){
+    void getEmailsByCityTest(){
 
         String city = "Paris";
         ArrayList<Person> persons = personController.getPersons();
-        ArrayList<String> personsEmail = new ArrayList<>();
+        ArrayList<Person> selectedPersons = new ArrayList<>();
         for (int i = 0; i < persons.size(); i++){
             System.out.println(persons.get(i).getCity());
             if(persons.get(i).getCity().equals(city)){
-                personsEmail.add(persons.get(i).getEmail());
+                selectedPersons.add(persons.get(i));
                 System.out.println(persons.get(i).getEmail());
             }
         }
 
-        for (int j = 0; j < personsEmail.size(); j++){
-            System.out.println("=====" + personsEmail.get(j));
-            assertEquals("Paris", personsEmail.get(j));
+        for (int j = 0; j < selectedPersons.size(); j++){
+            System.out.println("=====" + selectedPersons.get(j));
+            assertEquals("Paris", selectedPersons.get(j).getCity());
         }
+    }
+
+    @Test
+    void findPersonsInfosByLastAndFirstNameTest(){
+        String firstName = "Tony";
+        String lastName = "Cooper";
+        ArrayList<Person> persons = personController.getPersons();
+
+        for (int i = 0; i < persons.size(); i++){
+            if(
+                persons.get(i).getLastName().equals(lastName)
+                &&
+                persons.get(i).getFirstName().equals(firstName)
+            ){
+                assertEquals(lastName, persons.get(i).getLastName());
+                assertEquals(firstName, persons.get(i).getFirstName());
+            }
+        }
+    }
+
+    @Test
+    void getChildrenByAddressTest(){
+        String address = "1509 Culver St";
+        ArrayList<ChildAlertDTO> children = personController.getChildrenByAddress(address);
+
+        assertNotNull(children);
+        assertFalse(children.isEmpty());
+
+        ChildAlertDTO child = children.get(0);
+        assertNotNull(child.getFirstName());
+        assertTrue(child.getAge() <= 18);
     }
 
     private Person buildTestPerson(){
